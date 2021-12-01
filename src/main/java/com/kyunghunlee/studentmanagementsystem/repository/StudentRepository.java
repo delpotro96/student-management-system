@@ -1,0 +1,8 @@
+package com.kyunghunlee.studentmanagementsystem.repository;
+
+import com.kyunghunlee.studentmanagementsystem.entity.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StudentRepository extends JpaRepository<Student, Long> {
+
+}
