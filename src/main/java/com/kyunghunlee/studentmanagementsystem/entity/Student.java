@@ -3,11 +3,13 @@ package com.kyunghunlee.studentmanagementsystem.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.bytebuddy.implementation.bind.annotation.Empty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,20 +19,22 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
+    @Column(name = "name", nullable = false)
+    @NotBlank(message = "이름을 입력해주세요")
+    private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "grade", nullable = false)
+    @NotBlank(message = "학년을 입력해주세요")
+    private String grade;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "contact")
+    private String contact;
 
     public Student(String firstName, String lastName, String email) {
         super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.name = firstName;
+        this.grade = lastName;
+        this.contact = email;
     }
 
 

@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Management System</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -13,7 +13,7 @@
     <a class="navbar-brand" href="#">Student Management System</a>
 
     <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -63,16 +63,12 @@
             <td th:text="${student.grade}"></td>
             <td th:text="${student.contact}"></td>
             <td>
-                <a class="btn btn-success"
-                   th:href="@{/students/menu/{id}(id=${student.id})}">
-                    상세정보
-                </a>
-                <a th:href="@{/students/edit/{id}(id=${student.id})}"
-                   class="btn btn-primary">
+                <a class="btn btn-primary"
+                   th:href="@{/students/edit/{id}(id=${student.id})}">
                     UPDATE
                 </a>
-                <a th:href="@{/students/delete/{id}(id=${student.id})}"
-                   class="btn btn-danger">
+                <a class="btn btn-danger"
+                   th:href="@{/students/delete/{id}(id=${student.id})}">
                     DELETE
                 </a>
             </td>

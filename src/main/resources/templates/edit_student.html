@@ -36,33 +36,33 @@
             <div class="card-body">
                 <form th:action="@{/students/{id}(id=${student.id})}" th:object="${student}" method="POST">
                     <div class="form-group">
-                        <label> Student First Name</label>
+                        <label> Student Name</label>
                         <input
                                 type="text"
-                                name="firstName"
-                                th:field="*{firstName}"
+                                name="Name"
+                                placeholder="Enter Student Name"
                                 class="form-control"
-                                placeholder="Enter Student First Name"
+                                th:field="*{name}"
                         />
                     </div>
                     <div class="form-group">
-                        <label> Student Last Name</label>
+                        <label> Student Grade</label>
                         <input
                                 type="text"
-                                name="lastName"
-                                th:field="*{lastName}"
+                                name="grade"
+                                placeholder="Enter Student Grade"
                                 class="form-control"
-                                placeholder="Enter Student Last Name"
+                                th:field="*{grade}"
                         />
                     </div>
                     <div class="form-group">
-                        <label> Student Email</label>
+                        <label> Student Contact</label>
                         <input
                                 type="text"
-                                name="email"
-                                th:field="*{email}"
+                                name="contact"
+                                placeholder="Enter Student Email or Phone Number"
                                 class="form-control"
-                                placeholder="Enter Student Email"
+                                th:field="*{contact}"
                         />
                     </div>
                     <div class="box-footer">
