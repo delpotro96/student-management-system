@@ -12,74 +12,71 @@ import javax.validation.Valid;
 @Controller
 public class StudentController {
 
-    @Autowired
-    StudentService studentService;
+  @Autowired StudentService studentService;
 
-    @GetMapping("/students")
-    public String listStudent(Model model) {
-        model.addAttribute("students", studentService.getAllStudent());
-        return "students";
-    }
+  @GetMapping("/students")
+  public String listStudent(Model model) {
+    model.addAttribute("students", studentService.getAllStudent());
+    return "students";
+  }
 
-    /*
-     *  grade로 학생 조회
-     * */
-    @GetMapping("/students/{grade}")
-    public String listStudentByGrade(Model model, @PathVariable String grade) {
-        model.addAttribute("students", studentService.getStudentByGrade(grade));
-        System.out.println(studentService.getStudentByGrade(grade));
-        System.out.println(grade);
-        return "studentsByGrade";
-    }
+  /*
+   *  grade로 학생 조회
+   * */
+  @GetMapping("/students/{grade}")
+  public String listStudentByGrade(Model model, @PathVariable String grade) {
+    model.addAttribute("students", studentService.getStudentByGrade(grade));
+    System.out.println(studentService.getStudentByGrade(grade));
+    System.out.println(grade);
+    return "studentsByGrade";
+  }
 
-    @GetMapping("/students/new")
-    public String createStudentForm(Model model) {
+  @GetMapping("/students/new")
+  public String createStudentForm(Model model) {
 
-        //create student object to hold student form data
-        Student student = new Student();
-        model.addAttribute("student", student);
-        return "create_student";
-    }
+    // create student object to hold student form data
+    Student student = new Student();
+    model.addAttribute("student", student);
+    return "create_student";
+  }
 
-    @PostMapping("/students")
-    public String saveStudent(@Valid @ModelAttribute("student") Student student) {
-        studentService.saveStudent(student);
-        return "redirect:/students";
-    }
+  @PostMapping("/students")
+  public String saveStudent(@Valid @ModelAttribute("student") Student student) {
+    studentService.saveStudent(student);
+    return "redirect:/students";
+  }
 
-    @GetMapping("/students/edit/{id}")
-    public String editStudentForm(@PathVariable Long id, Model model) {
-        model.addAttribute("student", studentService.getStudentById(id));
-        System.out.println(id);
-        return "edit_student";
-    }
+  @GetMapping("/students/edit/{id}")
+  public String editStudentForm(@PathVariable Long id, Model model) {
+    model.addAttribute("student", studentService.getStudentById(id));
+    System.out.println(id);
+    return "edit_student";
+  }
 
-    @PostMapping("/students/{id}")
-    public String updateStudent(@PathVariable Long id, @ModelAttribute("student") Student student, Model model) {
+  @PostMapping("/students/{id}")
+  public String updateStudent(
+      @PathVariable Long id, @ModelAttribute("student") Student student, Model model) {
 
-        //get student from database by id
-        Student existingStudent = studentService.getStudentById(id);
-        existingStudent.setName(student.getName());
-        existingStudent.setGrade(student.getGrade());
-        existingStudent.setContact(student.getContact());
+    // get student from database by id
+    Student existingStudent = studentService.getStudentById(id);
+    existingStudent.setName(student.getName());
+    existingStudent.setGrade(student.getGrade());
+    existingStudent.setContact(student.getContact());
 
-        //save updated student object
-        studentService.updateStudent(existingStudent);
-        return "redirect:/students";
+    // save updated student object
+    studentService.updateStudent(existingStudent);
+    return "redirect:/students";
+  }
 
-    }
+  // handler method to handle delete student request
+  @GetMapping("/students/delete/{id}")
+  public String deleteStudent(@PathVariable Long id) {
+    studentService.deleteStudentById(id);
+    return "redirect:/students";
+  }
 
-    //handler method to handle delete student request
-    @GetMapping("/students/delete/{id}")
-    public String deleteStudent(@PathVariable Long id) {
-        studentService.deleteStudentById(id);
-        return "redirect:/students";
-    }
-
-    @GetMapping("/students/menu/{id}")
-    public String menuStudent(@PathVariable Long id) {
-        return "menu_student";
-    }
-
-
+  @GetMapping("/students/menu/{id}")
+  public String menuStudent(@PathVariable Long id) {
+    return "menu_student";
+  }
 }

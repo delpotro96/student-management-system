@@ -11,36 +11,35 @@ import java.util.List;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    @Autowired
-    StudentRepository studentRepository;
+  @Autowired StudentRepository studentRepository;
 
-    @Override
-    public List<Student> getAllStudent() {
-        return studentRepository.findAll();
-    }
+  @Override
+  public List<Student> getAllStudent() {
+    return studentRepository.findAll();
+  }
 
-    @Override
-    public Student saveStudent(Student student) {
-        return studentRepository.save(student);
-    }
+  @Override
+  public Student saveStudent(Student student) {
+    return studentRepository.save(student);
+  }
 
-    @Override
-    public Student getStudentById(Long id) {
-        return studentRepository.findById(id).get();
-    }
+  @Override
+  public Student getStudentById(Long id) {
+    return studentRepository.findById(id).get();
+  }
 
-    @Override
-    public Student updateStudent(Student student) {
-        return studentRepository.save(student);
-    }
+  @Override
+  public Student updateStudent(Student student) {
+    return studentRepository.save(student);
+  }
 
-    @Override
-    public void deleteStudentById(Long id) {
-        studentRepository.deleteById(id);
-    }
+  @Override
+  public void deleteStudentById(Long id) {
+    studentRepository.deleteById(id);
+  }
 
-    @Override
-    public List<Student> getStudentByGrade(String grade) {
-        return studentRepository.findStudentByGrade(grade);
-    }
+  @Override
+  public List<Student> getStudentByGrade(String grade) {
+    return studentRepository.findStudentByGrade(grade);
+  }
 }

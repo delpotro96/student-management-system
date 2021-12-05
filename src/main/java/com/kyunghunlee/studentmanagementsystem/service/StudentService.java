@@ -5,15 +5,15 @@ import com.kyunghunlee.studentmanagementsystem.entity.Student;
 import java.util.List;
 
 public interface StudentService {
-    List<Student> getAllStudent();
+  List<Student> getAllStudent();
 
-    Student saveStudent(Student student);
+  Student saveStudent(Student student);
 
-    Student getStudentById(Long id);
+  Student getStudentById(Long id);
 
-    Student updateStudent(Student student);
+  Student updateStudent(Student student);
 
-    void deleteStudentById(Long id);
+  void deleteStudentById(Long id);
 
-    List<Student> getStudentByGrade(String grade);
+  List<Student> getStudentByGrade(String grade);
 }

@@ -15,27 +15,25 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class Student {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @Column(name = "name", nullable = false)
-    @NotBlank(message = "이름을 입력해주세요")
-    private String name;
+  @Column(name = "name", nullable = false)
+  @NotBlank(message = "이름을 입력해주세요")
+  private String name;
 
-    @Column(name = "grade", nullable = false)
-    @NotBlank(message = "학년을 입력해주세요")
-    private String grade;
+  @Column(name = "grade", nullable = false)
+  @NotBlank(message = "학년을 입력해주세요")
+  private String grade;
 
-    @Column(name = "contact")
-    private String contact;
+  @Column(name = "contact")
+  private String contact;
 
-    public Student(String firstName, String lastName, String email) {
-        super();
-        this.name = firstName;
-        this.grade = lastName;
-        this.contact = email;
-    }
-
-
+  public Student(String firstName, String lastName, String email) {
+    super();
+    this.name = firstName;
+    this.grade = lastName;
+    this.contact = email;
+  }
 }
