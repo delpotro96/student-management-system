@@ -6,10 +6,28 @@
     <title>Student Management System</title>
     <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <style type="text/css">
         .li {
-            height: 70px;
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 20px;
+            display: block;
+            align-items: center;
+
         }
+
+        #groupDiv {
+            align-items: center;
+        }
+
+        .smpark {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
     </style>
 </head>
 <body>
@@ -32,14 +50,23 @@
     </div>
 </nav>
 <!-- list Group    -->
-<div ; class="list-group" style="margin-top: 13%">
+<div class="list-group" id="groupDiv">
     <a class="list-group-item list-group-item-action active" href="#">
-        Cras justo odio
+        학생 상세정보
     </a>
-    <a class="list-group-item list-group-item-action li" href="#" style="margin-top: 8%">Dapibus ac facilisis in</a>
-    <a class="list-group-item list-group-item-action li" href="#" style="margin-top: 8%">Morbi leo risus</a>
-    <a class="list-group-item list-group-item-action li" href="#" style="margin-top: 8%">Porta ac consectetur ac</a>
-    <a class="list-group-item list-group-item-action disabled li" href="#" style="margin-top: 8%">Vestibulum at eros</a>
+    <div class="smpark">
+        <a class="list-group-item list-group-item-action li" href="#" style="margin-top: 8%">학생 성적 관리</a>
+    </div>
+    <div class="smpark">
+        <a class="list-group-item list-group-item-action li" href="#" style="margin-top: 8%">학생 출결 관리</a>
+    </div>
+    <div class="smpark">
+        <a class="list-group-item list-group-item-action li" href="#" style="margin-top: 8%">학생 </a>
+    </div>
+    <div class="smpark">
+        <a class="list-group-item list-group-item-action disabled li" href="#" style="margin-top: 8%">Vestibulum at
+            eros</a>
+    </div>
 </div>
 </body>
 </html>
