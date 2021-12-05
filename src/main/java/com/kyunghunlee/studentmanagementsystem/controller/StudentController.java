@@ -2,6 +2,7 @@ package com.kyunghunlee.studentmanagementsystem.controller;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Student;
 import com.kyunghunlee.studentmanagementsystem.service.StudentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,9 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
+@RequiredArgsConstructor
 public class StudentController {
 
-  @Autowired StudentService studentService;
+  private final StudentService studentService;
 
   @GetMapping("/students")
   public String listStudent(Model model) {
