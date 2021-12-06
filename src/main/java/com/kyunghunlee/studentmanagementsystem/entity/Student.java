@@ -29,11 +29,4 @@ public class Student {
 
   @Column(name = "contact")
   private String contact;
-
-  public Student(String firstName, String lastName, String email) {
-    super();
-    this.name = firstName;
-    this.grade = lastName;
-    this.contact = email;
-  }
 }

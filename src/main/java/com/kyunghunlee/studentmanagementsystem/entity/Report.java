@@ -13,13 +13,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Report {
 
-  @Id private Long id;
+  @Id @GeneratedValue private Long id;
 
   private Integer korean_1;
   private Integer korean_2;
 
-  private Integer english;
-  private Integer english2;
+  private Integer english_1;
+  private Integer english_2;
 
   private Integer math_1;
   private Integer math_2;

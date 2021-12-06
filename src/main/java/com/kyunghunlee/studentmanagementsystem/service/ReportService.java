@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ReportService {
   List<Report> findAllByStudentId(Long student_id);
+
+  Report saveReport(Report report);
 }

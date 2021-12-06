@@ -18,4 +18,9 @@ public class ReportServiceImpl implements ReportService {
   public List<Report> findAllByStudentId(Long student_id) {
     return reportRepository.findAllByStudentId(student_id);
   }
+
+  @Override
+  public Report saveReport(Report report) {
+    return reportRepository.save(report);
+  }
 }
