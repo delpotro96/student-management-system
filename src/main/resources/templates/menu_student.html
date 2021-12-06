@@ -55,7 +55,8 @@
         학생 상세정보
     </a>
     <div class="smpark">
-        <a class="list-group-item list-group-item-action li" href="#" style="margin-top: 8%">학생 성적 관리</a>
+        <a class="list-group-item list-group-item-action li"
+           style="margin-top: 8%" th:href="@{/students/report/{student_id}(student_id=${student.id})}">학생 성적 관리</a>
     </div>
     <div class="smpark">
         <a class="list-group-item list-group-item-action li" href="#" style="margin-top: 8%">학생 출결 관리</a>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+
+    <style>
+        .cusTh {
+            padding: 50px;
+            font-size: 20px;
+        }
+
+        .cusTb {
+            height: 60px;
+            font-size: 22px;
+        }
+
+        .table td, .table th {
+            padding: 30px;
+        }
+
+        #grdDiv {
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" data-target="#collapsibleNavbar" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students}">Student Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div style="background: aliceblue">
+    <table class="cusTh">
+        <thead class="cusTh">
+        <tr class="cusTh" style="padding: 20px">
+            <th class="cusTh" scope="col"></th>
+            <th class="cusTh" scope="col" th:text="${student.name}"></th>
+            <th class="cusTh" scope="col" th:text="${student.grade}+학년"></th>
+            <th class="cusTh" scope="col" th:text="${student.contact}"></th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<table class="table cusTb" style="margin-top: 5%">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">1학기</th>
+        <th scope="col">국어</th>
+        <th scope="col">수학</th>
+        <th scope="col">영어</th>
+        <th scope="col">국사</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">점수</th>
+        <td th:text="${report?.korean_1}"></td>
+        <td th:text="${report?.math_1}"></td>
+        <td th:text="${report?.english_1}"></td>
+        <td th:text="${report?.history_1}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table cusTb" style="margin-top: 5%">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">2학기</th>
+        <th scope="col">국어</th>
+        <th scope="col">수학</th>
+        <th scope="col">영어</th>
+        <th scope="col">국사</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">점수</th>
+        <td th:text="${report?.korean_2}"></td>
+        <td th:text="${report?.math_2}"></td>
+        <td th:text="${report?.english_2}"></td>
+        <td th:text="${report?.history_2}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div id="grdDiv" style="flex: 1">
+    <a class="btn btn-primary btn-sm mb-3" id="grdBtn"
+       th:href="@{/students/report/edit/{student_id}(student_id=${student_id})} ">성적 등록</a>
+</div>
+</body>
+</html>

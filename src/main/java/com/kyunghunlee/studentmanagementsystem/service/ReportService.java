@@ -5,7 +5,7 @@ import com.kyunghunlee.studentmanagementsystem.entity.Report;
 import java.util.List;
 
 public interface ReportService {
-  List<Report> findAllByStudentId(Long student_id);
+  Report findByStudentId(Long student_id);
 
   Report saveReport(Report report);
 }
