@@ -3,6 +3,7 @@ package com.kyunghunlee.studentmanagementsystem.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -32,5 +33,7 @@ public class Report {
 
   private Integer history_2;
 
-  @ManyToOne private Student student;
+  @OneToOne(optional = false)
+  @JoinColumn(name = "student_id")
+  private Student student;
 }

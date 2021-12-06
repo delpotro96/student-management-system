@@ -1,6 +1,7 @@
 package com.kyunghunlee.studentmanagementsystem.repository;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Report;
+import com.kyunghunlee.studentmanagementsystem.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

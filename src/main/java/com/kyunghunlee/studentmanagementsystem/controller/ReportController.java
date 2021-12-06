@@ -1,14 +1,13 @@
 package com.kyunghunlee.studentmanagementsystem.controller;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Report;
+import com.kyunghunlee.studentmanagementsystem.entity.Student;
 import com.kyunghunlee.studentmanagementsystem.service.ReportService;
 import com.kyunghunlee.studentmanagementsystem.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,19 +21,27 @@ public class ReportController {
 
     model.addAttribute("report", reportService.findByStudentId(student_id));
     model.addAttribute("student", studentService.getStudentById(student_id));
-    System.out.println(reportService.findByStudentId(student_id));
     return "report_menu";
   }
 
   @GetMapping("/students/report/edit/{student_id}")
-  public String editGradeForm(@PathVariable Long student_id, Model model) {
+  public String saveReportForm(@PathVariable Long student_id, Model model) {
 
     model.addAttribute("report", reportService.findByStudentId(student_id));
     model.addAttribute("student", studentService.getStudentById(student_id));
-    System.out.println(reportService.findByStudentId(student_id));
-    return "report_edit";
+    return "report_save";
   }
 
+  /** saveReport 할 때 왜 student_id가 안들어가는 지 */
   @PostMapping("/students/report/{student_id}")
-  public void editGrade(@PathVariable Long student_id) {}
+  public String saveReport(@PathVariable Student student_id, Report report, Student student) {
+    System.out.println(student_id);
+
+    if (report.getStudent() == null) {
+      report.setStudent(student_id);
+    }
+
+    reportService.saveReport(report);
+    return "redirect:/students/report/{student_id}";
+  }
 }

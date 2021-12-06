@@ -1,6 +1,7 @@
 package com.kyunghunlee.studentmanagementsystem.service;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Report;
+import com.kyunghunlee.studentmanagementsystem.entity.Student;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package com.kyunghunlee.studentmanagementsystem.service.impl;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Report;
+import com.kyunghunlee.studentmanagementsystem.entity.Student;
 import com.kyunghunlee.studentmanagementsystem.repository.ReportRepository;
 import com.kyunghunlee.studentmanagementsystem.service.ReportService;
 import lombok.RequiredArgsConstructor;
