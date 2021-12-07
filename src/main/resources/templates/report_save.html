@@ -55,7 +55,7 @@
         </thead>
     </table>
 </div>
-<form method="POST" th:action="@{/students/report/{student_id}(student_id=${student_id})}">
+<form method="POST" th:action="@{/students/report/{student_id}(student_id=${student_id})}" th:object="${report}">
     <table class="table cusTb" style="margin-top: 5%">
         <thead class="thead-light">
         <tr>
@@ -74,6 +74,7 @@
                         class="form-control"
                         name="korean_1"
                         placeholder="점수를 입력해주세요"
+                        th:value="${report?.korean_1}"
                         type="text"
                 />
             </td>
@@ -82,6 +83,7 @@
                         class="form-control"
                         name="math_1"
                         placeholder="점수를 입력해주세요"
+                        th:value="${report?.math_1}"
                         type="text"
                 />
             </td>
@@ -90,6 +92,7 @@
                         class="form-control"
                         name="english_1"
                         placeholder="점수를 입력해주세요"
+                        th:value="${report?.english_1}"
                         type="text"
                 />
             </td>
@@ -98,21 +101,14 @@
                         class="form-control"
                         name="history_1"
                         placeholder="점수를 입력해주세요"
+                        th:value="${report?.history_1}"
                         type="text"
                 />
             </td>
         </tr>
         </tbody>
     </table>
-    <input name="student_id" th:value="${student_id}" type="hidden"/>
-    <div style="text-align: center">
-        <button class="btn btn-primary" type="submit">
-            Submit
-        </button>
-    </div>
-</form>
 
-<form method="POST" th:action="@{/students/report/{student_id}(student_id=${student_id})}">
     <table class="table cusTb" style="margin-top: 5%">
         <thead class="thead-light">
         <tr>
@@ -131,6 +127,7 @@
                         class="form-control"
                         name="korean_2"
                         placeholder="점수를 입력해주세요"
+                        th:value="${report?.korean_2}"
                         type="text"
                 />
             </td>
@@ -139,6 +136,7 @@
                         class="form-control"
                         name="math_2"
                         placeholder="점수를 입력해주세요"
+                        th:value="${report?.math_2}"
                         type="text"
                 />
             </td>
@@ -147,6 +145,7 @@
                         class="form-control"
                         name="english_2"
                         placeholder="점수를 입력해주세요"
+                        th:value="${report?.english_2}"
                         type="text"
                 />
             </td>
@@ -155,13 +154,14 @@
                         class="form-control"
                         name="history_2"
                         placeholder="점수를 입력해주세요"
+                        th:value="${report?.history_2}"
                         type="text"
                 />
             </td>
         </tr>
         </tbody>
     </table>
-    <input name="student_id" th:value="${student_id}" type="hidden"/>
+    <input name="student" th:value="${student_id}" type="hidden"/>
     <div style="text-align: center">
         <button class="btn btn-primary" type="submit">
             Submit
