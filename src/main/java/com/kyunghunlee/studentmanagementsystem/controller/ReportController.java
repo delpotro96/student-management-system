@@ -6,6 +6,7 @@ import com.kyunghunlee.studentmanagementsystem.service.ReportService;
 import com.kyunghunlee.studentmanagementsystem.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,15 +33,14 @@ public class ReportController {
     return "report_save";
   }
 
-  /** saveReport 할 때 왜 student_id가 안들어가는 지 */
   @PostMapping("/students/report/{student_id}")
-  public String saveReport(@PathVariable Student student_id, Report report, Student student) {
-    System.out.println(student_id);
+  public String saveReport(@PathVariable Long student_id, Report report) {
 
-    if (report.getStudent() == null) {
-      report.setStudent(student_id);
+    Report oldReport = reportService.findByStudentId(student_id);
+    if (oldReport != null) {
+      reportService.deleteById(oldReport.getId());
+      reportService.flush();
     }
-
     reportService.saveReport(report);
     return "redirect:/students/report/{student_id}";
   }

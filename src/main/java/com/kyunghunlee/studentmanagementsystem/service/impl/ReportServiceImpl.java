@@ -1,7 +1,6 @@
 package com.kyunghunlee.studentmanagementsystem.service.impl;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Report;
-import com.kyunghunlee.studentmanagementsystem.entity.Student;
 import com.kyunghunlee.studentmanagementsystem.repository.ReportRepository;
 import com.kyunghunlee.studentmanagementsystem.service.ReportService;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +22,15 @@ public class ReportServiceImpl implements ReportService {
   @Override
   public Report saveReport(Report report) {
     return reportRepository.save(report);
+  }
+
+  @Override
+  public void deleteById(Long id) {
+    reportRepository.deleteById(id);
+  }
+
+  @Override
+  public void flush() {
+    reportRepository.flush();
   }
 }

@@ -5,9 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
+@DynamicUpdate
 @Entity
 @Table(name = "report")
 @Data
@@ -33,7 +36,7 @@ public class Report {
 
   private Integer history_2;
 
-  @OneToOne(optional = false)
-  @JoinColumn(name = "student_id")
+  @OneToOne(cascade = CascadeType.MERGE)
+  @JoinColumn
   private Student student;
 }

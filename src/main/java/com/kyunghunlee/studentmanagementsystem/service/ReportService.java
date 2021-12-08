@@ -9,4 +9,8 @@ public interface ReportService {
   Report findByStudentId(Long student_id);
 
   Report saveReport(Report report);
+
+  void deleteById(Long id);
+
+  void flush();
 }
