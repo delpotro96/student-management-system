@@ -17,7 +17,7 @@ public class StudentController {
   private final StudentService studentService;
 
   @GetMapping("/students")
-  public String listStudent(Model model) {
+  public String findAllStudent(Model model) {
     model.addAttribute("students", studentService.getAllStudent());
     return "students";
   }
@@ -26,11 +26,18 @@ public class StudentController {
    *  grade로 학생 조회
    * */
   @GetMapping("/students/{grade}")
-  public String listStudentByGrade(Model model, @PathVariable String grade) {
-    model.addAttribute("students", studentService.getStudentByGrade(grade));
-    System.out.println(studentService.getStudentByGrade(grade));
+  public String findStudentByGrade(Model model, @PathVariable String grade) {
+    model.addAttribute("students", studentService.findStudentByGrade(grade));
+    System.out.println(studentService.findStudentByGrade(grade));
     System.out.println(grade);
     return "studentsByGrade";
+  }
+
+  /** keyword로 학생 조회 */
+  @GetMapping("/students/search/{keyword}")
+  public String findStudnetByKeyword(@PathVariable String keyword, Model model) {
+    model.addAttribute("students", studentService.findStudentByNameContains(keyword));
+    return "studentsByKeyword";
   }
 
   @GetMapping("/students/new")
@@ -50,7 +57,7 @@ public class StudentController {
 
   @GetMapping("/students/edit/{id}")
   public String editStudentForm(@PathVariable Long id, Model model) {
-    model.addAttribute("student", studentService.getStudentById(id));
+    model.addAttribute("student", studentService.findStudentById(id));
     System.out.println(id);
     return "edit_student";
   }
@@ -60,7 +67,7 @@ public class StudentController {
       @PathVariable Long id, @ModelAttribute("student") Student student, Model model) {
 
     // get student from database by id
-    Student existingStudent = studentService.getStudentById(id);
+    Student existingStudent = studentService.findStudentById(id);
     existingStudent.setName(student.getName());
     existingStudent.setGrade(student.getGrade());
     existingStudent.setContact(student.getContact());
@@ -79,7 +86,7 @@ public class StudentController {
 
   @GetMapping("/students/menu/{id}")
   public String menuStudent(@PathVariable Long id, Model model) {
-    model.addAttribute("student", studentService.getStudentById(id));
+    model.addAttribute("student", studentService.findStudentById(id));
     return "menu_student";
   }
 }

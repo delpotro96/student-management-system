@@ -9,11 +9,13 @@ public interface StudentService {
 
   Student saveStudent(Student student);
 
-  Student getStudentById(Long id);
+  Student findStudentById(Long id);
 
   Student updateStudent(Student student);
 
   void deleteStudentById(Long id);
 
-  List<Student> getStudentByGrade(String grade);
+  List<Student> findStudentByGrade(String grade);
+
+  List<Student> findStudentByNameContains(String keyword);
 }

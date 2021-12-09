@@ -44,4 +44,9 @@ public class StudentServiceImpl implements StudentService {
   public List<Student> getStudentByGrade(String grade) {
     return studentRepository.findStudentByGrade(grade);
   }
+
+  @Override
+  public List<Student> findStudentByNameContains(String keyword) {
+    return studentRepository.findStudentByNameContains(keyword);
+  }
 }
