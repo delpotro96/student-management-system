@@ -6,13 +6,6 @@
     <title>Student Management System</title>
     <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
-
-    <style>
-        #searchDiv {
-            margin-bottom: 20px;
-        }
-    </style>
-
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -47,12 +40,8 @@
                     <li class="page-item"><a class="page-link" th:href="@{/students/{grade}(grade=3)}">3학년</a></li>
                 </ul>
             </div>
-            <div>
+            <div style="flex: 1">
                 <a class="btn btn-primary btn-sm mb-3" th:href="@{/students/new} ">ADD STUDENT</a>
-                <form id="searchDiv" method="get" th:action="@{/students/search}">
-                    <input th:name="keyword" type="text">
-                    <button class="btn btn-info" type="submit">검색</button>
-                </form>
             </div>
         </div>
     </div>
@@ -69,21 +58,17 @@
         </thead>
 
         <tbody>
-        <tr th:each="student: ${students}">
-            <td th:text="${student.name}"></td>
-            <td th:text="${student.grade}"></td>
-            <td th:text="${student.contact}"></td>
+        <tr th:each="students: ${students}">
+            <td th:text="${students.name}"></td>
+            <td th:text="${students.grade}"></td>
+            <td th:text="${students.contact}"></td>
             <td>
-                <a class="btn btn-success"
-                   th:href="@{/students/menu/{id}(id=${student.id})}">
-                    상세정보
-                </a>
                 <a class="btn btn-primary"
-                   th:href="@{/students/edit/{id}(id=${student.id})}">
+                   th:href="@{/students/edit/{id}(id=${students.id})}">
                     UPDATE
                 </a>
                 <a class="btn btn-danger"
-                   th:href="@{/students/delete/{id}(id=${student.id})}">
+                   th:href="@{/students/delete/{id}(id=${students.id})}">
                     DELETE
                 </a>
             </td>

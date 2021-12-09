@@ -21,7 +21,7 @@ public class ReportController {
   public String showReport(@PathVariable Long student_id, Model model) {
 
     model.addAttribute("report", reportService.findByStudentId(student_id));
-    model.addAttribute("student", studentService.getStudentById(student_id));
+    model.addAttribute("student", studentService.findStudentById(student_id));
     return "report_menu";
   }
 
@@ -29,7 +29,7 @@ public class ReportController {
   public String saveReportForm(@PathVariable Long student_id, Model model) {
 
     model.addAttribute("report", reportService.findByStudentId(student_id));
-    model.addAttribute("student", studentService.getStudentById(student_id));
+    model.addAttribute("student", studentService.findStudentById(student_id));
     return "report_save";
   }
 

@@ -17,14 +17,12 @@ public class StudentController {
   private final StudentService studentService;
 
   @GetMapping("/students")
-  public String findAllStudent(Model model) {
+  public String findAllStudent(Model model, @ModelAttribute String keyword) {
     model.addAttribute("students", studentService.getAllStudent());
     return "students";
   }
 
-  /*
-   *  grade로 학생 조회
-   * */
+  /** grade로 학생 조회 */
   @GetMapping("/students/{grade}")
   public String findStudentByGrade(Model model, @PathVariable String grade) {
     model.addAttribute("students", studentService.findStudentByGrade(grade));
@@ -34,9 +32,10 @@ public class StudentController {
   }
 
   /** keyword로 학생 조회 */
-  @GetMapping("/students/search/{keyword}")
-  public String findStudnetByKeyword(@PathVariable String keyword, Model model) {
+  @GetMapping("/students/search")
+  public String findStudnetByKeyword(String keyword, Model model) {
     model.addAttribute("students", studentService.findStudentByNameContains(keyword));
+    System.out.println("실행됨" + keyword);
     return "studentsByKeyword";
   }
 
