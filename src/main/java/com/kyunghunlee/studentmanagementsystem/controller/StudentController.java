@@ -3,15 +3,17 @@ package com.kyunghunlee.studentmanagementsystem.controller;
 import com.kyunghunlee.studentmanagementsystem.entity.Student;
 import com.kyunghunlee.studentmanagementsystem.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 @Controller
 @RequiredArgsConstructor
+@Validated
 public class StudentController {
 
   private final StudentService studentService;
@@ -33,7 +35,8 @@ public class StudentController {
 
   /** keyword로 학생 조회 */
   @GetMapping("/students/search")
-  public String findStudnetByKeyword(String keyword, Model model) {
+  public String findStudnetByKeyword(
+      @Size(min = 2, message = "2글자 이상 입력해주세요") String keyword, Model model) {
     model.addAttribute("students", studentService.findStudentByNameContains(keyword));
     System.out.println("실행됨" + keyword);
     return "studentsByKeyword";
@@ -87,5 +90,11 @@ public class StudentController {
   public String menuStudent(@PathVariable Long id, Model model) {
     model.addAttribute("student", studentService.findStudentById(id));
     return "menu_student";
+  }
+
+  @GetMapping("/students/memo/{id}")
+  public String memoStudent(@PathVariable Long id, Model model) {
+    model.addAttribute("student", studentService.findStudentById(id));
+    return "memo_student";
   }
 }

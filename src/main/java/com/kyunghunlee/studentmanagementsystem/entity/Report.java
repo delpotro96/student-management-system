@@ -36,7 +36,7 @@ public class Report {
 
   private Integer history_2;
 
-  @OneToOne(cascade = CascadeType.MERGE)
+  @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
   @JoinColumn
   private Student student;
 }
