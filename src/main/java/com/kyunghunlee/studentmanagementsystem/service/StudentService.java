@@ -1,21 +1,45 @@
 package com.kyunghunlee.studentmanagementsystem.service;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Student;
+import com.kyunghunlee.studentmanagementsystem.repository.StudentRepository;
+import com.kyunghunlee.studentmanagementsystem.service.StudentService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface StudentService {
-  List<Student> getAllStudent();
+@Service
+@RequiredArgsConstructor
+public class StudentService {
 
-  Student saveStudent(Student student);
+  private final StudentRepository studentRepository;
 
-  Student findStudentById(Long id);
+  public List<Student> getAllStudent() {
+    return studentRepository.findAll();
+  }
 
-  Student updateStudent(Student student);
+  public Student saveStudent(Student student) {
+    return studentRepository.save(student);
+  }
 
-  void deleteStudentById(Long id);
+  public Student findStudentById(Long id) {
+    return studentRepository.findById(id).get();
+  }
 
-  List<Student> findStudentByGrade(String grade);
+  public Student updateStudent(Student student) {
+    return studentRepository.save(student);
+  }
 
-  List<Student> findStudentByNameContains(String keyword);
+  public void deleteStudentById(Long id) {
+    studentRepository.deleteById(id);
+  }
+
+  public List<Student> findStudentByGrade(String grade) {
+    return studentRepository.findStudentByGrade(grade);
+  }
+
+  public List<Student> findStudentByNameContains(String keyword) {
+    return studentRepository.findStudentByNameContains(keyword);
+  }
 }

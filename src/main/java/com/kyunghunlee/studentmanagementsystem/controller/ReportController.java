@@ -1,12 +1,10 @@
 package com.kyunghunlee.studentmanagementsystem.controller;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Report;
-import com.kyunghunlee.studentmanagementsystem.entity.Student;
 import com.kyunghunlee.studentmanagementsystem.service.ReportService;
 import com.kyunghunlee.studentmanagementsystem.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
