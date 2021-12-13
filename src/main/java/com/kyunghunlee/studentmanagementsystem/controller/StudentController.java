@@ -91,10 +91,4 @@ public class StudentController {
     model.addAttribute("student", studentService.findStudentById(id));
     return "menu_student";
   }
-
-  @GetMapping("/students/memo/{id}")
-  public String memoStudent(@PathVariable Long id, Model model) {
-    model.addAttribute("student", studentService.findStudentById(id));
-    return "memo_student";
-  }
 }

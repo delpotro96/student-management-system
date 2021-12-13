@@ -3,12 +3,9 @@ package com.kyunghunlee.studentmanagementsystem.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 @DynamicUpdate
 @Entity
@@ -36,7 +33,7 @@ public class Report {
 
   private Integer history_2;
 
-  @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn
   private Student student;
 }
