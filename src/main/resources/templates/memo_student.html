@@ -75,6 +75,25 @@
         <button class="btn btn-primary" style="margin-top: 20px" type="submit">저장</button>
     </form>
 </div>
+<table class="table">
+    <tr th:each="memo: ${memo}">
+        <td style="text-align: center" th:text="${memo.content}"></td>
+        <td style="text-align: center" th:text="${memo.saveTime}"></td>
+        <td>
+            <div style="width: fit-content">
+                <!--                HiddenHttpMethodFilter 더 알아보고 추가해야됨-->
+                <form style="float: left" th:action="@{/students/memo/{student_id}(student_id=${student.id})}"
+                      th:method="put">
+                    <input name="_method" type="hidden" value="put"/>
+                    <button class="btn btn-warning">수정</button>
+                </form>
+                <form style="float: right;">
+                    <button class="btn btn-danger" style="margin-left: 8px">삭제</button>
+                </form>
+            </div>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

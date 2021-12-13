@@ -67,6 +67,7 @@
             <td th:text="${student.grade}"></td>
             <td th:text="${student.contact}"></td>
             <td>
+<!--                버튼들 http 요청방식 변경 필요-->
                 <a class="btn btn-primary"
                    th:href="@{/students/edit/{id}(id=${student.id})}">
                     UPDATE

@@ -17,9 +17,9 @@ public class MemoService {
     return memoRepository.save(memo);
   }
 
-  //  public List<Memo> findAllByStudent_Id(Long student_id) {
-  //    return memoRepository.findAllByStudent_Id(student_id);
-  //  }
+  public List<Memo> findAllByStudent_Id(Long student_id) {
+    return memoRepository.findAllByStudentId(student_id);
+  }
 
   public void delete(Long id) {
     memoRepository.deleteById(id);
