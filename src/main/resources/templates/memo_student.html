@@ -87,7 +87,10 @@
                     <input name="_method" type="hidden" value="put"/>
                     <button class="btn btn-warning">수정</button>
                 </form>
-                <form style="float: right;">
+                <form style="float: right;" th:action="@{/students/memo/{student_id}(student_id=${student.id})}"
+                      th:method="delete">
+                    <input name="_method" type="hidden" value="delete"/>
+                    <input th:name="id" th:value="${memo.id}" type="hidden"/>
                     <button class="btn btn-danger" style="margin-left: 8px">삭제</button>
                 </form>
             </div>
