@@ -2,7 +2,6 @@ package com.kyunghunlee.studentmanagementsystem.service;
 
 import com.kyunghunlee.studentmanagementsystem.entity.Report;
 import com.kyunghunlee.studentmanagementsystem.repository.ReportRepository;
-import com.kyunghunlee.studentmanagementsystem.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,15 +17,17 @@ public class ReportService {
     return reportRepository.findByStudentId(student_id);
   }
 
-  public Report saveReport(Report report) {
+  public Report saveReport(Report report, Long student_id) {
+    Report oldReport = reportRepository.findByStudentId(student_id);
+
+    if (oldReport != null) {
+      reportRepository.deleteById(oldReport.getId());
+      reportRepository.flush();
+    }
     return reportRepository.save(report);
   }
 
   public void deleteById(Long id) {
     reportRepository.deleteById(id);
-  }
-
-  public void flush() {
-    reportRepository.flush();
   }
 }

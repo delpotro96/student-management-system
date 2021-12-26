@@ -34,12 +34,7 @@ public class ReportController {
   @PostMapping("/students/report/{student_id}")
   public String saveReport(@PathVariable Long student_id, Report report) {
 
-    Report oldReport = reportService.findByStudentId(student_id);
-    if (oldReport != null) {
-      reportService.deleteById(oldReport.getId());
-      reportService.flush();
-    }
-    reportService.saveReport(report);
+    reportService.saveReport(report, student_id);
     return "redirect:/students/report/{student_id}";
   }
 }
